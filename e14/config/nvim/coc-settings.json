@@ -1,0 +1,7 @@
+{
+  "prettier.requireConfig": true,
+  "eslint.run": "onSave",
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "javascript.suggestionActions.enabled": false
+}

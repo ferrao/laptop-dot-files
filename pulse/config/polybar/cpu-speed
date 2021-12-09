@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# get info from cpu
+
+speed=$(cpupower frequency-info| grep current.*CPU.*Hz | awk '{print $4}')
+echo "@ $speed GHz"

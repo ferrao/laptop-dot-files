@@ -1,0 +1,10 @@
+{
+  "coc-eslint|global": {
+    "eslintLibraries": {
+      "libs": {
+        "/home/ferrao/Workspace/AC/n01r/backend/server/node_modules/eslint/lib/api.js": true
+      }
+    },
+    "eslintAlwaysAllowExecution": true
+  }
+}
