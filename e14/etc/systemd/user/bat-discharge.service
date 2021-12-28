@@ -1,0 +1,14 @@
+# Service unit for handling battery discharge
+
+[Unit]
+Description=Battery discharge handler
+After=display-manager.service
+Wants=bat-discharge.timer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/battery-discharge.sh
+
+[Install]
+WantedBy=default.target
+

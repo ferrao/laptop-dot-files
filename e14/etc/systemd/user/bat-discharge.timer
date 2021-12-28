@@ -1,0 +1,13 @@
+# Timer unit for handling battery discharge
+
+[Unit]
+Description=Battery discharge handler
+Requires=bat-discharge.service
+
+[Timer]
+Unit=bat-discharge.service
+OnBootSec=1min
+OnUnitActiveSec=1min
+
+[Install]
+WantedBy=timers.target
