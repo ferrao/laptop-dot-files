@@ -1,0 +1,2 @@
+cat ~/.aws/account-ids.txt | cut -f 1 -d ' ' | rofi -dmenu -i -markup-rows -no-show-icons -width 300 -lines 10 -yoffset 40 | xdotool type --clearmodifiers --file -
+
