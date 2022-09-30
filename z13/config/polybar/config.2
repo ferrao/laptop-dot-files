@@ -1,0 +1,425 @@
+;========================================================== 
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #CC222222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #888
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/primary]
+monitor = HDMI-A-0
+width = 99%
+height = 30
+offset-x = 0.5%
+offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+wine-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+
+font-0 = Fixed:pixelsize=13;1
+font-1 = Unifont:fontformat=truetype:size=12:antialias=false;0
+font-2 = Siji:pixelsize=12;1
+font-3 = Font Awesome: style=Solid: pixelsize=12
+font-4 = Fixed:pixelsize=12;1
+font-5 = Material Design Icons: style=Regular: pixelsize=12; 2
+
+modules-left = bspwm xwindow 
+modules-center = filesystem memory cpu cpu-freq cpu-cores cpu-temperature gpu-temperature ssd-temperature
+modules-right = date wip wlan pulseaudio-control battery powermenu
+
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+tray-position = left
+tray-padding = 10
+tray-background = ${colors.background}
+
+[bar/secondary]
+monitor = eDP 
+width = 99%
+height = 27
+offset-x = 0.5%
+offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+wine-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Fixed:pixelsize=12;1
+font-1 = Unifont:fontformat=truetype:size=12:antialias=false;0
+font-2 = Siji:pixelsize=12;1
+
+modules-left = bspwm
+modules-center = date
+#modules-right = wip wlan 
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 100
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <animation-discharging> <label-discharging>
+
+format-full-prefix = " "
+format-full-prefix-foreground = #55aa55
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground =  #ffb52a
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = #ffb52a
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground =  #ff5555
+animation-discharging-framerate = 750
+
+[module/menuapps]
+type = custom/menu
+expand-right = true
+label-open = Apps
+label-close = X
+label-separator =" | "
+
+; "menu-LEVEL-N" has the same properties as "label-NAME" with
+; the additional "exec" property
+;
+; Available exec commands:
+;   menu-open-LEVEL
+;   menu-close
+; Other commands will be executed using "/bin/sh -c $COMMAND"
+
+menu-0-0 = System
+menu-0-0-exec = menu-open-1
+menu-0-1 = Apps
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = Sound Control
+menu-1-0-exec = pauvcontrol &
+menu-1-1 = WiFi
+menu-1-1-exec = wpa_gui &
+
+menu-2-0 = Image Editor
+menu-2-0-exec = gthumb &
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+label-font = 5
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+label-mounted = %{F#3c8d87}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces= true
+
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-padding = 2
+label-focused-font= 5
+
+label-occupied = %name%
+label-occupied-padding = 2
+label-occupied-font= 5
+
+label-urgent = %name%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+label-urgent-font= 5
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+label-empty-font= 5
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/cpu]
+type = internal/cpu
+interval = 3
+format-prefix = " "
+format-prefix-foreground = #f50a4d
+label = %percentage%%
+
+[module/cpu-freq]
+type = custom/script
+exec = ~/.config/polybar/cpu-speed
+interval = 3
+
+[module/cpu-cores]
+type = internal/cpu
+interval = 2
+format = <ramp-coreload>
+format-foreground = #f50a4d
+ramp-core-load-spacing=1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #729b4d
+label = %percentage_used%%
+
+[module/wip]
+type = internal/network
+interface = wlp1s0
+interval = 10
+format-connected = <label-connected>
+label-connected = %{A1:nm-connection-editor:}%local_ip%%{A}
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %signal% %{F#55aa55} %downspeed% %upspeed% %{F-}
+
+format-disconnected = <label-disconnected>
+label-disconnected = %ifname% down
+label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = #9f78e1
+
+[module/eip]
+type = internal/network
+interface = enp0s25
+interval = 10
+format-connected = <label-connected>
+label-connected = %local_ip%
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %d-%m-%Y"
+
+time = %H:%M
+time-alt =
+
+format-prefix = 
+format-prefix-foreground = #0a6cf5
+
+label = %date% %time%
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+label-padding = 0
+label-foreground = ${colors.foreground-alt}
+exec = ~/.config/polybar/pulseaudio-control --icons-volume " , " --icon-muted " " listen
+click-right = exec pavucontrol &
+click-left = ~/.config/polybar/pulseaudio-control togmute
+scroll-up = ~/.config/polybar/pulseaudio-control --volume-max 130 up
+scroll-down = ~/.config/polybar/pulseaudio-control --volume-max 130 down
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/gpu-fan]
+type = custom/script
+exec = ~/.config/polybar/gpu-fan-speed
+interval = 10
+format-prefix = " "
+format-foreground = #ebc149
+label-foreground = #ffffff
+
+[module/cpu-temperature]
+type = internal/temperature
+thermal-zone = 0
+base-temperature = 30
+warn-temperature = 70
+hwmon-path = /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input 
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #f50a4d
+
+[module/gpu-temperature]
+type = internal/temperature
+thermal-zone = 0
+base-temperature = 40
+warn-temperature = 75
+hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:04:00.0/hwmon/hwmon4/temp1_input 
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #ebc149
+
+[module/ssd-temperature]
+type = internal/temperature
+thermal-zone = 0
+base-temperature = 40
+warn-temperature = 75
+hwmon-path = /sys/devices/pci0000:00/0000:00:02.4/0000:03:00.0/hwmon/hwmon3/temp1_input 
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #3c8d87
+
+
+[module/powermenu]
+type = custom/menu
+expand-right = true
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = exit
+menu-0-0-exec = bspc quit
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

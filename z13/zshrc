@@ -1,0 +1,24 @@
+# Kyboard & bindings
+setxkbmap -option ctrl:nocaps
+setxkbmap -layout us -variant altgr-intl -option nodeadkeys
+xset r rate 250 50
+
+# Use powerline
+USE_POWERLINE="true"
+
+# Source manjaro-zsh-configuration
+if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+  source /usr/share/zsh/manjaro-zsh-config
+fi
+
+# Source zsh config files
+for file in ~/.config/zsh/* 
+do
+	source $file
+done
+
+# Load starship
+eval "$(starship init zsh)"
+
+# Fortune cookie
+fortune | lolcat

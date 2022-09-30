@@ -1,0 +1,51 @@
+#! /bin/sh
+
+# Monitor setup
+$HOME/.config/bspwm/hotplug_monitor.sh
+
+# Composite manager
+picom -b
+
+# Setup wallpapers
+feh --bg-fill ~/Pictures/wallpapers/space-39.jpg
+
+# Automount USB drives
+pgrep -x udiskie > /dev/null || udiskie &
+
+# Fix issues with some Java Apps
+wmname LG3D
+
+# Laynch sxhkd if not running already
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Launch polybar
+$HOME/.config/polybar/launch.sh
+
+# Bspwm config
+bspc config remove_disabled_monitor true
+bspc config remove_unplugged_monitor true
+bspc config border_width       	2
+bspc config window_gap          8
+bspc config split_ratio          0.52
+bspc config borderless_monocle   	true
+bspc config gapless_monocle      	true
+bspc config focus_follows_pointer 	true
+
+# Application preferences
+bspc rule -a tastyworks desktop=0 state=floating follow=on
+bspc rule -a mplayer2 state=floating
+
+# Autostart stuff
+dex -a -e bspwm
+
+# Gnome Online Accounts has logout/login issues
+/usr/libexec/goa-daemon --replace &
+
+# Window rules
+
+# Fix trader workstation floats
+bspc rule -a install4j-jclient-Launcher:sun-awt-X11-XWindowPeer manage=off
+bspc rule -a install4j-jclient-Launcher:sun-awt-X11-XWindowPeer:Login manage=on 
+
+# fixme: breaks tasty, still looking for proper classname for dxcharts style dialogs
+#bspc rule -a tasty.javafx.launcher.LauncherFxApp state=floating manage=on layer=above sticky=off private=off locked=off follow=off
