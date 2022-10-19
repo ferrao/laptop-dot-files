@@ -100,6 +100,16 @@ lspconfig.tsserver.setup {
   }
 }
 
+lspconfig.jsonls.setup {
+  on_attach = on_attach,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    }
+  }
+}
+
 
 -- Remove from servers the ones we have explecitely configured
 local servers = tablecopy(allServers)

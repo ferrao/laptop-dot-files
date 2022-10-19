@@ -3,25 +3,25 @@
 cpuProfile() {
     case $(cat /sys/firmware/acpi/platform_profile) in
             low-power)
-              echo "L "
+              echo "Low"
               ;;
             
             balanced)
-              echo "B "
+              echo "Bal"
               ;;
             
             performance)
-              echo "P "
+              echo "Per"
               ;;
             
             *)
-              echo "? "
+              echo "???"
               ;;
     esac
 }
 
 # get info from cpu
-speed=$(cpupower frequency-info| grep current.*CPU.*Hz | awk '{print $4}')
+speed=$(cpupower frequency-info| grep current.*CPU.*Hz | awk '{print $4 " " $5}')
 profile=$(cpuProfile)
-echo "$profile @ $speed GHz"
+echo "$profile @ $speed"
 

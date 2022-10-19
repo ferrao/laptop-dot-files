@@ -1,2 +1,6 @@
-cat ~/.aws/account-ids.txt | cut -f 1 -d ' ' | rofi -dmenu -i -markup-rows -no-show-icons -width 300 -lines 10 -yoffset 40 | xdotool type --clearmodifiers --file -
+#!/bin/bash 
+
+OPTION=`cat ~/.aws/account-ids.txt | cut -f 1 -d ' ' | rofi -dmenu -i -markup-rows -no-show-icons -width 300 -lines 10 -yoffset 40 -window-title "AWS Account"`
+RESULT=`grep $OPTION ~/.aws/account-ids.txt  | cut -f 2 -d ' '`
+echo $RESULT | xdotool type --clearmodifiers --file - 
 

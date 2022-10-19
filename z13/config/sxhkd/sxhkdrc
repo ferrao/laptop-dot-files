@@ -30,21 +30,22 @@ alt + space
 super + shift + p
     passmenu --type
 
-# Generate password
+# generate password
 super + r
-    tr -dc "a-zA-Z0-9_#@.-" < /dev/urandom | head -c 14 | xclip -selection primary
+    tr -dc "a-zA-Z0-9_#@.-" < /dev/urandom | head -c 14 | xclip -selection primary; notify-send 'Password generated'
 
 # make sxhkd reload its configuration files:
 super + shift + r
 	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
 
 # desktop screen
-Print
-	esscrotum
+super + alt + Print
+	escrotum
 
 # desktop region screenshot
 super + Print
 	escrotum -s
+#
 # AWS Account IDs
 super + shift + a
     sxhkd-aws
@@ -97,10 +98,6 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
 	bspc node -f {next,prev}.local
@@ -147,13 +144,13 @@ super + ctrl + shift + space
 # move/resize
 #
 
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+# expand a window by moving one of its sides outward
+super + {comma, period, minus, equal}
+	bspc node -z {left -20 0,right 20 0,bottom 0 20,top 0 -20}
 
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+# shrink a window by moving one of its sides inward
+super + shift + {period, comma, equal, minus}
+	bspc node -z {left +20 0,right -20 0,bottom 0 -20,top 0 +20}
 
 # move a floating window
 super + {Left,Down,Up,Right}
@@ -162,10 +159,6 @@ super + {Left,Down,Up,Right}
 # Function Keys
 XF86AudioMute
 	pulsemixer --toggle-mute
-
-# TODO
-#XF86AudioMicMute
-#	pulsemixer --toggle-mute
 
 XF86AudioLowerVolume
 	pulsemixer --change-volume -5
