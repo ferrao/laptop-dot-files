@@ -1,6 +1,27 @@
 #!/bin/sh
+#
+cpuProfile() {
+    case $(cat /sys/firmware/acpi/platform_profile) in
+            low-power)
+              echo "L "
+              ;;
+            
+            balanced)
+              echo "B "
+              ;;
+            
+            performance)
+              echo "P "
+              ;;
+            
+            *)
+              echo "? "
+              ;;
+    esac
+}
 
 # get info from cpu
-
 speed=$(cpupower frequency-info| grep current.*CPU.*Hz | awk '{print $4}')
-echo "@ $speed GHz"
+profile=$(cpuProfile)
+echo "$profile @ $speed GHz"
+

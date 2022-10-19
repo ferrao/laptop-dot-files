@@ -24,7 +24,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/primary]
-monitor = HDMI-A-0
+monitor = DisplayPort-0
 width = 99%
 height = 30
 offset-x = 0.5%
@@ -361,7 +361,7 @@ type = internal/temperature
 thermal-zone = 0
 base-temperature = 40
 warn-temperature = 75
-hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:04:00.0/hwmon/hwmon4/temp1_input 
+hwmon-path = /sys/class/drm/card0/device/hwmon/hwmon6/temp1_input 
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
@@ -380,7 +380,7 @@ type = internal/temperature
 thermal-zone = 0
 base-temperature = 40
 warn-temperature = 75
-hwmon-path = /sys/devices/pci0000:00/0000:00:02.4/0000:03:00.0/hwmon/hwmon3/temp1_input 
+hwmon-path = /sys/class/nvme/nvme0/hwmon3/temp1_input
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
