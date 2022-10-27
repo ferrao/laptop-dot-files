@@ -43,6 +43,11 @@ packer.startup(function(use)
         end
     }
 
+    -- Elixir
+    use {
+        'mhinz/vim-mix-format'
+    }
+
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
@@ -75,6 +80,9 @@ packer.startup(function(use)
 
     use {
         'L3MON4D3/LuaSnip',
+        requires = {
+            'saadparwaiz1/cmp_luasnip'
+        },
         config = function()
             require('user.plugins.luasnip')
         end
