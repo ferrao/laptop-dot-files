@@ -21,6 +21,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # Launch polybar
 $HOME/.config/polybar/launch.sh
 
+# Launch low battery monitor script
+$HOME/.config/bspwm/battery.sh &
+
 # Bspwm config
 bspc config remove_disabled_monitor true
 bspc config remove_unplugged_monitor true

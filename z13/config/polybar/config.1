@@ -51,13 +51,15 @@ module-margin-right = 2
 font-0 = Fixed:pixelsize=10;1
 font-1 = Unifont:fontformat=truetype:size=12:antialias=false;0
 font-2 = Siji:pixelsize=12;1
-font-3 = Font Awesome: style=Solid: pixelsize=12
+font-3 = Symbols Nerd Font:pixelsize=12
 font-4 = Fixed:pixelsize=12;1
-font-5 = Material Design Icons: style=Regular: pixelsize=12; 2
+font-5 = Font Awesome 6 Free: pixelsize=11
+font-6 = Font Awesome 6 Brands: pixelsize=11
+font-7 = Material Icons: style=Regular: pixelsize=13; 2
 
 modules-left = bspwm xwindow 
 modules-center = filesystem memory cpu cpu-freq cpu-cores cpu-temperature gpu-temperature ssd-temperature
-modules-right = date wip wlan pulseaudio-control battery powermenu
+modules-right = date wip wlan pulseaudio-control-input pulseaudio-control-output battery powermenu
 
 wm-restack = bspwm
 
@@ -106,7 +108,7 @@ modules-center = date
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = AC0
+adapter = AC
 full-at = 100
 
 format-charging = <animation-charging> <label-charging>
@@ -219,7 +221,7 @@ label = %percentage%%
 [module/cpu-freq]
 type = custom/script
 exec = ~/.config/polybar/cpu-speed
-interval = 3
+interval = 4
 
 [module/cpu-cores]
 type = internal/cpu
@@ -291,43 +293,31 @@ format-prefix-foreground = #0a6cf5
 
 label = %date% %time%
 
-[module/pulseaudio-control]
+[module/pulseaudio-control-output]
 type = custom/script
 tail = true
-label-padding = 0
+label-padding = 2
+format-underline = #f00 
 label-foreground = ${colors.foreground-alt}
 exec = ~/.config/polybar/pulseaudio-control --icons-volume " , " --icon-muted " " listen
 click-right = exec pavucontrol &
-click-left = ~/.config/polybar/pulseaudio-control togmute
-scroll-up = ~/.config/polybar/pulseaudio-control --volume-max 130 up
-scroll-down = ~/.config/polybar/pulseaudio-control --volume-max 130 down
+click-left = pulseaudio-control togmute
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
 
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+[module/pulseaudio-control-input]
+type = custom/script
+tail = true
+label-padding = 2
+format-underline = #f00 
+label-foreground = ${colors.foreground-alt}
+; label-foreground = ${colors.foreground}
+exec = pulseaudio-control  --node-type input --icons-volume "" --icon-muted "" --node-nicknames-from "*:  Headphones" --node-blacklist "*.monitor" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control --node-type input togmute
+click-middle = pulseaudio-control --node-type input next-node
+scroll-up = pulseaudio-control --node-type input --volume-max 130 up
+scroll-down = pulseaudio-control --node-type input --volume-max 130 down
 
 [module/gpu-fan]
 type = custom/script
