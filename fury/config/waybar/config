@@ -1,3 +1,60 @@
+[{
+    "layer": "top", // Waybar at top layer
+    "output": "DP-4",
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "spacing": 4, // Gaps between modules (4px),
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["cpu", "memory", "disk", "temperature"],
+    "hyprland/workspaces": {
+      "on-click": "activate",
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "format": "{id}",
+      "all-outputs": "false",
+      "persistent_workspaces": {
+          "6": [
+            "DP-4"
+          ],
+          "7": [
+            "DP-4"
+          ],
+          "8": [
+            "DP-4"
+          ]
+      }
+    },
+    "cpu": {
+    "interval": 1,
+     "format": "  {icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11} {icon12} {icon13} {icon14} {icon15} {usage}%",
+     "format-icons": [
+          "<span color='#69ff94'>▁</span>", // green
+          "<span color='#2aa9ff'>▂</span>", // blue
+          "<span color='#f8f8f2'>▃</span>", // white
+          "<span color='#f8f8f2'>▄</span>", // white
+          "<span color='#ffffa5'>▅</span>", // yellow
+          "<span color='#ffffa5'>▆</span>", // yellow
+          "<span color='#ff9977'>▇</span>", // orange
+          "<span color='#dd532e'>█</span>"  // red
+     ]
+    },
+    "memory": {
+	"interval": 30,
+    	"format": "  {used:0.1f}G ({percentage}%)"
+    },
+    "disk": {
+	"interval": 30,
+	"format": "󰋊 {used} ({percentage_used}%)",
+	"path": "/"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+},
 {
     "layer": "top", // Waybar at top layer
     "output": "DP-2",
@@ -6,25 +63,34 @@
     //"width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "tray"],
-    // Modules configuration
-    "hyperland/workspaces": {
-        "format": "{name}: {icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "active": "",
-            "default": ""
-        },
-	"persistent_workspaces" : {
-		"*": 5
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "tray"],
+    "hyprland/workspaces": {
+      "on-click": "activate",
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "format": "{id}",
+      "all-outputs": "false",
+      "persistent_workspaces": {
+          "1": [
+            "DP-2"
+          ],
+          "2": [
+            "DP-2"
+          ],
+          "3": [
+            "DP-2"
+          ],
+          "4": [
+            "DP-2"
+          ],
+          "5": [
+            "DP-2"
+          ]
 	}
     },
+    // Modules configuration
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -50,21 +116,6 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": true
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
@@ -72,12 +123,11 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-ethernet": "eth  {ipaddr}",
+        "format-wifi": "{essid} ({signalStrength}%)   {ipaddr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "tooltip-format": "{ifname} via {gwaddr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -110,5 +160,5 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
-}
+}]
 
