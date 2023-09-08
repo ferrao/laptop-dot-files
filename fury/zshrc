@@ -20,5 +20,8 @@ done
 # Load starship
 eval "$(starship init zsh)"
 
+# Load folder specific dotenv variables
+eval "$(direnv hook zsh)"
+
 # Fortune cookie
 fortune | lolcat
