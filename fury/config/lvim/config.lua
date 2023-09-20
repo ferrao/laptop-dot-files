@@ -12,6 +12,7 @@
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.relativenumber = true
+vim.opt.conceallevel = 2
 
 -- general
 lvim.log.level = "info"
@@ -92,6 +93,10 @@ lvim.builtin.alpha.dashboard.section.header.val = {
     [[                                                                       ]],
 }
 
+table.insert(lvim.builtin.alpha.dashboard.section.buttons.entries, 0, {
+    "o", "🗒 Org Mode", ":Neorg index<CR>"
+})
+
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
 
@@ -160,7 +165,29 @@ lvim.plugins = {
     { "lunarvim/colorschemes" },
     -- { "arcticicestudio/nord-vim" },
     { "folke/tokyonight.nvim" },
-    { "shaunsingh/nord.nvim" }
+    { "shaunsingh/nord.nvim" },
+    {
+        "nvim-neorg/neorg",
+        -- ft = "norg", -- lazy load on filetype
+        build = ":Neorg sync-parsers",
+        config = function()
+            require("neorg").setup {
+                load = {
+                    ["core.defaults"] = {},  -- Loads default behaviour
+                    ["core.concealer"] = {}, -- Adds pretty icons to documents
+                    ["core.dirman"] = {      -- Manages Workspaces
+                        config = {
+                            workspaces = {
+                                notes = "~/Workspace/org/notes",
+                                test = "~/Workspace/org/test",
+                            },
+                            default_workspace = "notes"
+                        }
+                    }
+                }
+            }
+        end
+    }
 }
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
