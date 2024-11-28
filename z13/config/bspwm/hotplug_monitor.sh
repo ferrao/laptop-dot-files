@@ -2,7 +2,7 @@
 
 function setupSingleMonitor() {
     # Setup single monitor
-    xrandr --output eDP --primary --mode 1920x1200 --pos 0x0 --rotate normal --output DisplayPort-0 --off
+    xrandr --output eDP --primary --mode 1920x1200 --pos 0x0 --rotate normal --output DisplayPort-0 --off --set TearFree on
 
     # Setup bscp virtual displays
     bspc monitor eDP -d 1 2 3 4 5 6
@@ -10,7 +10,7 @@ function setupSingleMonitor() {
 
 function setupDualMonitors() {
     # Setup dual monitor
-    xrandr --output eDP --mode 1920x1200 --pos 1920x0 --rotate normal --output DisplayPort-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+    xrandr --output eDP --mode 1920x1200 --pos 0x1080 --rotate normal --output DisplayPort-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
     # Make sure monitors are in the right order
     if ! bspc query --monitors --names | head -1 | grep DisplayPort-0; then

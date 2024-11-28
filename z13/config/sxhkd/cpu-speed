@@ -1,0 +1,26 @@
+#!/bin/sh
+
+
+SYS_FILE=/sys/firmware/acpi/platform_profile
+
+cpuProfile() {
+    case $1 in
+            Low)
+              echo "low-power" > $SYS_FILE
+              ;;
+
+            Bal)
+              echo "balanced" > $SYS_FILE
+              ;;
+
+            Per)
+              echo "performance" > $SYS_FILE
+              ;;
+
+            *)
+              echo "???"
+              ;;
+    esac
+}
+
+cpuProfile "$1"

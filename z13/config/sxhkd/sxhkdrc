@@ -34,7 +34,7 @@ super + shift + p
 super + r
     tr -dc "a-zA-Z0-9_#@.-" < /dev/urandom | head -c 14 | xclip -selection primary; notify-send 'Password generated'
 
-# make sxhkd reload its configuration files:
+# make sxhkd nreload its configuration files:
 super + shift + r
 	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
 
@@ -156,7 +156,9 @@ super + shift + {period, comma, equal, minus}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Function Keys
+#
+# Function keys
+#
 XF86AudioMute
 	pulsemixer --toggle-mute
 
@@ -174,3 +176,9 @@ XF86MonBrightnessUp
 
 XF86Favorites
 	systemctl suspend
+
+#
+# CPU Performance keys
+#
+ctrl + alt + {h,m,l}
+   sudo cpu-speed {Per,Bal,Low}

@@ -9,7 +9,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # Launch bars
 polybar primary &
 
-if bspc query -M --names | grep HDMI-A-0; then
+if bspc query -M --names | grep -E '(HDMI|DisplayPort)' ; then
     polybar secondary &
 fi
 

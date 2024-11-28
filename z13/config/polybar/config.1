@@ -332,7 +332,7 @@ type = internal/temperature
 thermal-zone = 0
 base-temperature = 30
 warn-temperature = 70
-hwmon-path = /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input 
+hwmon-path = /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input 
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
@@ -351,7 +351,7 @@ type = internal/temperature
 thermal-zone = 0
 base-temperature = 40
 warn-temperature = 75
-hwmon-path = /sys/class/drm/card0/device/hwmon/hwmon6/temp1_input 
+hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:e3:00.0/hwmon/hwmon5/temp1_input 
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
@@ -370,7 +370,7 @@ type = internal/temperature
 thermal-zone = 0
 base-temperature = 40
 warn-temperature = 75
-hwmon-path = /sys/class/nvme/nvme0/hwmon3/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:02.4/0000:02:00.0/nvme/nvme0/hwmon3/temp1_input 
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>

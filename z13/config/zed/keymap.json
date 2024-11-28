@@ -1,0 +1,72 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: Open Default Keymap`
+// from the command palette.
+[
+    {
+        "context": "Workspace",
+        "bindings": {
+            "\\ space": "workspace::ToggleLeftDock",
+            "\\ alt": "workspace::ToggleRightDock",
+            "\\ t": "workspace::ToggleBottomDock",
+            "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+            "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+            "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+        }
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+            "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+            "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+        }
+    },
+
+    {
+        "context": "Editor && (showing_code_actions || showing_completions)",
+        "bindings": {
+            "up": "editor::ContextMenuPrev",
+            "ctrl-k": "editor::ContextMenuPrev",
+            "down": "editor::ContextMenuNext",
+            "ctrl-j": "editor::ContextMenuNext",
+            "ctrl-h": "editor::ContextMenuFirst",
+            "ctrl-l": "editor::ContextMenuLast"
+        }
+    },
+    {
+        "context": "ProjectPanel && !editing",
+        "bindings": {
+            "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+            "a": "project_panel::NewFile",
+            "r": "project_panel::Rename",
+            "d": "project_panel::Delete"
+        }
+    },
+    {
+        "context": "VimControl && !menu",
+        "bindings": {
+            "ctrl-w": ["pane::CloseActiveItem", { "saveIntent": "saveAll" }]
+        }
+    },
+    {
+        "context": "Pane",
+        "bindings": {
+            "alt-j": "pane::ActivateNextItem",
+            "alt-h": "pane::ActivateNextItem",
+            "alt-l": "pane::ActivatePrevItem",
+            "alt-k": "pane::ActivatePrevItem"
+        }
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "ctrl-w": "pane::CloseActiveItem"
+        }
+    }
+]

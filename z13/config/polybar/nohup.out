@@ -1,0 +1,13 @@
+polybar|warn:  Naming your configuration file 'config' is deprecated, the expected name is 'config.ini'.
+polybar|notice:  Parsing config file: /home/ferrao/.config/polybar/config
+polybar|error: Uncaught exception, shutting down: Monitor "DisplayPort-0" not found or disconnected
+polybar|warn:  Naming your configuration file 'config' is deprecated, the expected name is 'config.ini'.
+polybar|notice:  Parsing config file: /home/ferrao/.config/polybar/config
+polybar|notice:  Loading module 'bspwm' of type 'internal/bspwm'
+polybar|notice:  Loading module 'date' of type 'internal/date'
+polybar|notice:  Loaded 2 modules
+polybar|notice:  Loaded font "Fixed:pixelsize=12" (name=Noto Sans, offset=1, file=/usr/share/fonts/noto/NotoSans-Regular.ttf)
+polybar|notice:  Loaded font "Unifont:fontformat=truetype:size=12:antialias=false" (name=Unifont, offset=0, file=/usr/share/fonts/Unifont/Unifont.ttf)
+polybar|notice:  Loaded font "Siji:pixelsize=12" (name=Siji, offset=1, file=/usr/share/fonts/misc/siji.otb)
+polybar|notice:  Received signal(15): Terminated
+polybar|notice:  Termination signal received, shutting down...

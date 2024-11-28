@@ -35,8 +35,7 @@ bspc config gapless_monocle      	true
 bspc config focus_follows_pointer 	true
 
 # Application preferences
-bspc rule -a tastyworks desktop=0 state=floating follow=on
-bspc rule -a mplayer2 state=floating
+bspc rule -a tastyworks:* state=floating follow=on
 
 # Autostart stuff
 dex -a -e bspwm

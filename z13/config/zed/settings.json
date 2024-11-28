@@ -1,0 +1,67 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+    "project_panel": {
+        "show_diagnostics": "all"
+    },
+    "assistant": {
+        "default_model": {
+            "provider": "openai",
+            "model": "gpt-4o"
+        },
+        "version": "2"
+    },
+    "features": {
+        // Which inline completion provider to use.
+        "inline_completion_provider": "supermaven"
+    },
+    "vim_mode": true,
+    "middle_click_paste": true,
+    "buffer_font_family": "JetBrainsMono Nerd Font",
+    "ui_font_size": 18,
+    "buffer_font_size": 16,
+    "relative_line_numbers": true,
+    "soft_wrap": "editor_width",
+    "wrap_guides": [80, 120],
+    "scrollbar": {
+        "show": "never"
+    },
+    "vertical_scroll_margin": 0,
+    "theme": {
+        "mode": "system",
+        "light": "Oceanic Next",
+        "dark": "JetBrains New Dark"
+    },
+    "experimental.theme_overrides": {
+        "syntax": {
+            "comment.doc": {
+                "font_style": "italic"
+            }
+        }
+    },
+    "tabs": {
+        "file_icons": true
+    },
+    "languages": {
+        "Elixir": {
+            "show_whitespaces": "selection",
+            "language_servers": ["elixir-ls"]
+        }
+    },
+    "lsp": {
+        "elixirs-ls": {
+            "settings": {
+                "dialyzerEnabled": true
+            }
+        }
+    },
+    "inlay_hints": {
+        "enabled": true
+    }
+}
