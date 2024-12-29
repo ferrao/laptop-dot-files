@@ -15,7 +15,9 @@
             "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
             "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
             "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+            "\\ f": "file_finder::Toggle",
+            "\\ s": "workspace::NewSearch"
         }
     },
     {
@@ -24,7 +26,11 @@
             "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
             "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
             "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+            "ctrl-s": "pane::RevealInProjectPanel",
+            "ctrl-shift-l": "pane::SplitVertical",
+            "ctrl-a": "editor::ShowInlineCompletion",
+            "ctrl-]": "editor::AcceptPartialInlineCompletion"
         }
     },
 
@@ -46,6 +52,7 @@
             "a": "project_panel::NewFile",
             "r": "project_panel::Rename",
             "d": "project_panel::Delete"
+            // "s": "" TODO: WAITING FOR ZED TO SUPPORT open in vsplit
         }
     },
     {

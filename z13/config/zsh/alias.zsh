@@ -3,7 +3,9 @@
 #
 
 alias vim=lvim
-alias ls="ls --color=auto"
+alias zed=zeditor
+alias ls="eza"
+alias cat="bat"
 alias tree="tree -C"
 alias clear="clear"
 alias claer="clear"
