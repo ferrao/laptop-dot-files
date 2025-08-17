@@ -7,36 +7,143 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+    "context_servers": {
+        "mcp-server-context7": {
+            "source": "extension",
+            "settings": {
+                "default_minimum_tokens": "10000"
+            }
+        }
+    },
+    "hide_mouse": "on_typing_and_movement",
+    "edit_predictions": {
+        "mode": "subtle",
+        "copilot": {
+            "proxy": null,
+            "proxy_no_verify": null
+        },
+        "enabled_in_text_threads": false
+    },
+    "icon_theme": "Catppuccin Frappé",
     "telemetry": {
         "diagnostics": true,
         "metrics": true
     },
+    "tab_bar": {
+        "show": true
+    },
+    "tabs": {
+        "file_icons": true
+    },
+    "indent_guides": {
+        "enabled": true,
+        "coloring": "indent_aware"
+    },
     "project_panel": {
-        "show_diagnostics": "all"
+        "dock": "left",
+        "show_diagnostics": "all",
+        "git_status": true,
+        "button": true
     },
-    "assistant": {
+    "agent_font_size": 18,
+    "agent": {
+        "play_sound_when_agent_done": true,
+        "always_allow_tool_actions": false,
         "default_model": {
-            "provider": "zed.dev",
-            "model": "claude-3-5-sonnet-latest"
+            "provider": "copilot_chat",
+            "model": "gpt-4o"
         },
-        "version": "2"
+        "default_profile": "write",
+        "profiles": {
+            "write": {
+                "name": "Write",
+                "enable_all_context_servers": true,
+                "tools": {
+                    "copy_path": true,
+                    "create_directory": true,
+                    "create_file": true,
+                    "delete_path": true,
+                    "diagnostics": true,
+                    "edit_file": true,
+                    "fetch": true,
+                    "list_directory": true,
+                    "move_path": true,
+                    "now": true,
+                    "find_path": true,
+                    "read_file": true,
+                    "grep": true,
+                    "terminal": true,
+                    "thinking": true,
+                    "web_search": true
+                }
+            },
+            "ask": {
+                "context_servers": {
+                    "mcp-server-sequential-thinking": {
+                        "tools": {
+                            "sequentialthinking": false
+                        }
+                    }
+                },
+                "name": "Ask",
+                //"enable_all_context_servers": true,
+                "tools": {
+                    "contents": true,
+                    "diagnostics": true,
+                    "fetch": true,
+                    "list_directory": true,
+                    "now": true,
+                    "find_path": true,
+                    "read_file": true,
+                    "open": true,
+                    "grep": true,
+                    "thinking": true,
+                    "web_search": true
+                }
+            },
+            "minimal": {
+                "name": "Minimal",
+                "enable_all_context_servers": false,
+                "tools": {}
+            }
+        }
     },
-    "show_inline_completions": false,
+    "editor_model": {
+        "provider": "zed.dev",
+        "model": "claude-3-7-sonnet-latest"
+    },
+    "show_edit_predictions": true,
     "features": {
         // Which inline completion provider to use.
-        "inline_completion_provider": "supermaven"
+        "edit_prediction_provider": "zed"
     },
     "vim_mode": true,
+    "vim": {
+        "cursor_shape": {
+            "normal": "hollow",
+            "insert": "bar",
+            "replace": "block",
+            "visual": "underline"
+        }
+    },
     "middle_click_paste": true,
+    // "buffer_font_family": "0xProto Nerd Font",
     "buffer_font_family": "JetBrainsMono Nerd Font",
-    "ui_font_size": 20,
-    "buffer_font_size": 18,
+    "buffer_font_features": {
+        "calt": true,
+        "liga": true
+    },
+    "ui_font_size": 18,
+    "buffer_font_size": 23.0,
     "relative_line_numbers": true,
     "soft_wrap": "editor_width",
     "show_whitespaces": "selection",
     "wrap_guides": [80, 120],
     "scrollbar": {
         "show": "never"
+    },
+    "minimap": {
+        "show": "auto"
     },
     "vertical_scroll_margin": 0,
     "theme": {
@@ -51,12 +158,28 @@
             }
         }
     },
-    "tabs": {
-        "file_icons": true
+    "inlay_hints": {
+        "enabled": true
+    },
+    "diagnostics": {
+        "button": true,
+        "include_warnings": true,
+        "inline": {
+            "enabled": true,
+            "update_debounce_ms": 150,
+            "padding": 4,
+            "min_column": 0,
+            "max_severity": null
+        }
     },
     "languages": {
         "Elixir": {
             "language_servers": ["elixir-ls", "tailwindcss-language-server"]
+        },
+        "TypeScript": {
+            "inlay_hints": {
+                "enabled": false
+            }
         }
     },
     "lsp": {
@@ -67,6 +190,7 @@
         },
         "tailwindcss-language-server": {
             "settings": {
+                "classAttributes": ["class", "className", "styles"],
                 "includeLanguages": {
                     "HEEX": "html",
                     "Elixir": "html"
@@ -74,7 +198,5 @@
             }
         }
     },
-    "inlay_hints": {
-        "enabled": true
-    }
+    "file_scan_exclusions": ["**/node_modules", "**/dist", "**/out"]
 }

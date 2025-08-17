@@ -12,10 +12,10 @@
             "\\ space": "workspace::ToggleLeftDock",
             "\\ alt": "workspace::ToggleRightDock",
             "\\ t": "workspace::ToggleBottomDock",
-            "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-            "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-            "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-j": "workspace::ActivatePaneDown",
             "\\ f": "file_finder::Toggle",
             "\\ s": "workspace::NewSearch"
         }
@@ -23,22 +23,23 @@
     {
         "context": "Editor",
         "bindings": {
-            "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-            "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-            "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+            "\\ e": "editor::GoToDiagnostic",
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-j": "workspace::ActivatePaneDown",
             "ctrl-s": "pane::RevealInProjectPanel",
             "ctrl-shift-l": "pane::SplitVertical",
-            "ctrl-a": "editor::ShowInlineCompletion",
-            "ctrl-]": "editor::AcceptPartialInlineCompletion"
+            "ctrl-a": "editor::ShowEditPrediction",
+            "ctrl-]": "editor::AcceptPartialEditPrediction"
         }
     },
 
     {
         "context": "Editor && (showing_code_actions || showing_completions)",
         "bindings": {
-            "up": "editor::ContextMenuPrev",
-            "ctrl-k": "editor::ContextMenuPrev",
+            "up": "editor::ContextMenuPrevious",
+            "ctrl-k": "editor::ContextMenuPrevious",
             "down": "editor::ContextMenuNext",
             "ctrl-j": "editor::ContextMenuNext",
             "ctrl-h": "editor::ContextMenuFirst",
@@ -48,7 +49,7 @@
     {
         "context": "ProjectPanel && !editing",
         "bindings": {
-            "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+            "ctrl-l": "workspace::ActivatePaneRight",
             "a": "project_panel::NewFile",
             "r": "project_panel::Rename",
             "d": "project_panel::Delete"
@@ -58,7 +59,7 @@
     {
         "context": "VimControl && !menu",
         "bindings": {
-            "ctrl-w": ["pane::CloseActiveItem", { "saveIntent": "saveAll" }]
+            "ctrl-w": ["pane::CloseActiveItem", { "save_intent": "save_all" }]
         }
     },
     {
@@ -66,8 +67,8 @@
         "bindings": {
             "alt-j": "pane::ActivateNextItem",
             "alt-h": "pane::ActivateNextItem",
-            "alt-l": "pane::ActivatePrevItem",
-            "alt-k": "pane::ActivatePrevItem"
+            "alt-l": "pane::ActivatePreviousItem",
+            "alt-k": "pane::ActivatePreviousItem"
         }
     },
     {

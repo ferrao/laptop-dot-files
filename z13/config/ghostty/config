@@ -5,6 +5,6 @@ background-blur-radius = 20
 font-size = 12
 font-family = "JetBrainsMono Nerd Font"
 font-style-italic = "JetBrains Mono Thin Italic"
-scrollback-limit = 2000
+scrollback-limit = 2000000
 theme = custom
 
